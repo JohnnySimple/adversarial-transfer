@@ -35,8 +35,11 @@ packages = ["src/advtransfer"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-q --strict-markers"
-markers = ["slow: requires model training or full attack runs"]
+addopts = "-q --strict-markers -m 'not expensive'"
+markers = [
+    "slow: requires model training or full attack runs",
+    "expensive: multi-minute runs excluded by default; run with -m expensive",
+]
 
 [tool.ruff]
 line-length = 100
